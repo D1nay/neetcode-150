@@ -12,7 +12,18 @@ def isAnagram(s: str, t: str) -> bool:
 
     # Sorted string comparison T:O(N logN) S: O(N)
      
-    s_sorted = sorted(s) # T:O(N log N) S:O(N) 
-    t_sorted = sorted(t) # T:O(N log N) S:O(N)
-    if s_sorted == t_sorted: return True
-    else: return False
+    # s_sorted = sorted(s) # T:O(N log N) S:O(N) 
+    # t_sorted = sorted(t) # T:O(N log N) S:O(N)
+    # if s_sorted == t_sorted: return True
+    # else: return False
+
+    # Vanilla python, no collections
+    def get_char_freq_list(string):
+        freq_list = {}
+        for char in string:
+            if freq_list.get(char, 0) == 0:
+                freq_list[char] = 1
+            else:
+                freq_list[char] += 1
+        return freq_list
+    return get_char_freq_list(s) == get_char_freq_list(t)
