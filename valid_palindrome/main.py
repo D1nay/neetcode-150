@@ -14,7 +14,7 @@ def isPalindrome(s: str) -> bool:
     # T: O(s/2) S: O(1)
 
     # Filter only alphabetic characters and make them lowercase
-    s = ''.join(filter(str.isalpha, s)).lower()
+    s = ''.join(filter(str.isalnum, s)).lower()
 
     length = len(s)
     for i in range(length // 2):

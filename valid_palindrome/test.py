@@ -14,5 +14,9 @@ class Test_TestTwoSum(unittest.TestCase):
         input = " "
         output = True
         self.assertEqual(isPalindrome(input), output)
+    def test_0P(self):
+        input = "0P"
+        output = False
+        self.assertEqual(isPalindrome(input), output)       
 if __name__ == '__main__':
     unittest.main()
