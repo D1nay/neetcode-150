@@ -1,7 +1,7 @@
 from valid_parenthesis.main import isValid
 import unittest
 
-class Test_maxArea(unittest.TestCase):
+class Test_validPar(unittest.TestCase):
     def test_1(self):
         s = "()"
         self.assertEqual(isValid(s), True)

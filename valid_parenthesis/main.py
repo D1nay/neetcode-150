@@ -13,22 +13,44 @@ s consists of parentheses only '()[]{}'.
 '''
 
 def isValid(s: str) -> bool:
-    # Python list as stack
-    # T: O(n) S: O(1)
+    # # Python list as stack
+    # # T: O(n) S: O(n)
     
+    # stack = [] # Could be up to S: O(n)
+    
+    # for c in s:
+    #     if c in ['(', '{', '[']:
+    #         stack.append(c)
+    #     else:
+    #         if len(stack) == 0: return False
+    #         removed = stack.pop()
+    #         if c == ')' and removed != '(':
+    #             return False
+    #         if c == '}' and removed != '{':
+    #             return False            
+    #         if c == ']' and removed != '[':
+    #             return False
+    
+    # return True if len(stack) == 0 else False
+
+
+
+    # Neetcode solution using a hashmap as well
+    # T: O(n), S: O(n)
+
     stack = []
+    closeToOpen = {
+        ')' : '(',
+        '}' : '{',
+        ']' : '['
+                   }
     
     for c in s:
-        if c in ['(', '{', '[']:
-            stack.append(c)
+        if c in closeToOpen:
+            if stack and stack[-1] == closeToOpen[c]:
+                stack.pop()
+            else:
+                return False
         else:
-            if len(stack) == 0: return False
-            removed = stack.pop()
-            if c == ')' and removed != '(':
-                return False
-            if c == '}' and removed != '{':
-                return False            
-            if c == ']' and removed != '[':
-                return False
-    
-    return True if len(stack) == 0 else False
+            stack.append(c)
+    return True if not stack else False
